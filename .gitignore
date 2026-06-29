@@ -1,0 +1,11 @@
+.workbuddy/
+.deploy-flag
+server.js
+admin.html
+admin.js
+start-server.bat
+deploy.bat
+.vercelignore
+vercel.json
+node_modules/
+.git/
