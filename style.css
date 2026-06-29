@@ -107,9 +107,11 @@ button { cursor: pointer; border: none; background: none; }
   flex-shrink: 0;
 }
 .logo-img {
-  width: 40px;
-  height: 40px;
+  width: 40px !important;
+  height: 40px !important;
+  max-width: 40px !important;
   object-fit: contain;
+  flex-shrink: 0;
   display: block;
 }
 .logo-text { color: var(--white); }
