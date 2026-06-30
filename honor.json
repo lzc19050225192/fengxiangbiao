@@ -7,13 +7,6 @@
     "description": "经青岛市科学技术局、青岛市财政局、国家税务总局青岛市税务局联合认定，具备高新技术企业资格。"
   },
   {
-    "title": "ISO 9001 质量管理体系认证",
-    "year": "2020",
-    "institution": "中国质量认证中心",
-    "image": "images/honors/1782479622755_resxjw.jpg",
-    "description": "无人机研发、生产、销售及售后服务全过程通过ISO 9001质量管理体系认证。"
-  },
-  {
     "title": "民用无人驾驶航空器经营许可证",
     "year": "2021",
     "institution": "民航华东地区管理局",
@@ -28,17 +21,52 @@
     "description": "在无人机应用技术细分领域具备专业化、精细化、特色化、新颖化优势。"
   },
   {
-    "title": "中国航空运输协会会员单位",
-    "year": "2020",
-    "institution": "中国航空运输协会",
-    "image": "",
-    "description": "加入中国航空运输协会通用航空委员会，参与行业标准制定与技术交流。"
+    "title": "无人机培训服务企业资质证书(甲级）",
+    "year": "2024",
+    "institution": "中国国家标准化管理委员会",
+    "image": "images/honors/1782802347021_5fpc1n.jpg",
+    "description": "本甲级为无人机培训最高等级资质，师资场地齐全，可承接全类别无人机驾驶员培训业务。"
   },
   {
-    "title": "青岛市科技创新领军企业",
-    "year": "2022",
-    "institution": "青岛市人民政府",
-    "image": "",
-    "description": "在无人机技术创新与产业化应用方面处于行业领先地位。"
+    "title": "无人机教育装备服务企业资质证书（甲级）",
+    "year": "2024",
+    "institution": "中国国家标准化管理委员会",
+    "image": "images/honors/1782802469526_cj3wtx.jpg",
+    "description": "本甲级为教育装备最高等级资质，可供应院校全套无人机教具、实训室整体建设方案。"
+  },
+  {
+    "title": "AAA级信用企业",
+    "year": "2024",
+    "institution": "",
+    "image": "images/honors/1782802545974_ae3y37.jpg",
+    "description": "AAA级信用企业，资信等级最高，履约可靠，适合院校项目招投标合作。"
+  },
+  {
+    "title": "五星党组织评星定级",
+    "year": "2023",
+    "institution": "中共青岛西海岸新区工委组织部",
+    "image": "images/honors/1782802692850_px7t1h.jpg",
+    "description": "五星党组织为党建最高等次，支部建设规范，队伍作风过硬，保障校企项目高效落地。"
+  },
+  {
+    "title": "种子独角兽企业",
+    "year": "2025",
+    "institution": "",
+    "image": "images/honors/1782802787864_uchpct.jpg",
+    "description": "2025年独角兽种子企业，科创成长潜力突出，技术领先，具备快速扩张实力，项目竞争力强。"
+  },
+  {
+    "title": "民用无人机驾驶员训练机构合格证",
+    "year": "2024",
+    "institution": "中国民航飞行员协会",
+    "image": "images/honors/1782802925199_ok321j.jpg",
+    "description": "行业官方培训资质，具备合规场地与持证教员，可正规开展无人机驾驶员执照培训。"
+  },
+  {
+    "title": "重质量重合同守信用企业",
+    "year": "2024",
+    "institution": "",
+    "image": "images/honors/1782803190413_x0qail.jpg",
+    "description": "获评重质量重合同守信用企业，履约守信，产品服务达标，招投标资质完备。"
   }
 ]
