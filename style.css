@@ -501,29 +501,44 @@ section:nth-child(even) { background: var(--gray-1); }
 
 /* ── 通用筛选按钮（FAQ 等板块使用） ────────────────────── */
 .filter-btn {
-  padding: 7px 20px;
-  border-radius: 20px;
+  padding: 8px 16px;
   font-size: 0.85rem;
   font-weight: 600;
-  border: 1.5px solid var(--gray-2);
-  color: var(--text-light);
-  background: var(--white);
+  border: none;
+  color: var(--gray-4);
+  background: none;
   transition: all var(--transition);
   cursor: pointer;
   font-family: inherit;
+  position: relative;
 }
-.filter-btn:hover, .filter-btn.active {
-  background: var(--blue);
-  border-color: var(--blue);
-  color: var(--white);
+.filter-btn::after {
+  content: '';
+  position: absolute;
+  left: 16px;
+  right: 16px;
+  bottom: 0;
+  height: 2px;
+  background: transparent;
+  transition: background var(--transition);
+}
+.filter-btn:hover {
+  color: var(--navy);
+}
+.filter-btn.active {
+  color: var(--navy);
+}
+.filter-btn.active::after {
+  background: var(--navy);
 }
 
 /* ── FAQ ──────────────────────────────────────────────── */
 #faq { background: var(--gray-1); }
 .faq-filter {
   display: flex;
-  gap: 10px;
+  gap: 20px;
   flex-wrap: wrap;
+  justify-content: center;
   margin-bottom: 32px;
 }
 .faq-list { display: flex; flex-direction: column; gap: 12px; max-width: 860px; margin: 0 auto; }
