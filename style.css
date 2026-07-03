@@ -260,10 +260,11 @@ nav ul li a.active {
 .btn-outline:hover { background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.7); }
 .hero-stats {
   display: flex;
-  gap: 32px;
+  gap: 48px;
   margin-top: 48px;
   padding-top: 32px;
   border-top: 1px solid rgba(255,255,255,0.12);
+  justify-content: center;
 }
 .hero-stat-num {
   font-size: 1.8rem;
