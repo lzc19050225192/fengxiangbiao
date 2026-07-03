@@ -307,6 +307,7 @@ function loadHonors() {
 
 function loadPartners() {
   var grid = document.getElementById('partners-grid');
+  var filterDiv = document.getElementById('partner-filter');
   showLoading(grid);
   loadContent('partner', 'partner.json', true, function (err, data) {
     if (err) {
@@ -318,22 +319,49 @@ function loadPartners() {
       grid.innerHTML = '<p style="text-align:center;color:var(--gray-4);padding:40px 0">暂无合作伙伴信息</p>';
       return;
     }
+    // 构建分类筛选按钮
+    var catMap = {};
+    for (var i = 0; i < data.length; i++) {
+      var c = safeVal(data[i], 'category', '');
+      if (c) catMap[c] = true;
+    }
+    var cats = ['全部'];
+    for (var k in catMap) cats.push(k);
+    filterDiv.innerHTML = cats.map(function (c) {
+      return '<button class="filter-btn' + (c === '全部' ? ' active' : '') + '" data-cat="' + escAttr(c) + '">' + escHtml(c) + '</button>';
+    }).join('');
 
-    // 渲染卡片 — 仅 logo，白色独立卡片
+    // 渲染卡片
     var html = '';
     for (var i = 0; i < data.length; i++) {
       var p = data[i];
       var name = safeVal(p, 'name', '未知企业');
       var logo = safeVal(p, 'logo', '');
       var category = safeVal(p, 'category', '');
+      var description = safeVal(p, 'description', '');
       var logoHtml = logo
         ? '<img src="' + escAttr(logo) + '" alt="' + escAttr(name) + '" loading="lazy">'
         : (category === '政府机构' ? '🏛️' : category === '科研院所' ? '🔬' : category === '企业合作' ? '🤝' : '🏢');
-      html += '<div class="partner-card reveal reveal-delay-' + ((i % 5) + 1) + '">'
+      html += '<div class="partner-card reveal reveal-delay-' + ((i % 4) + 1) + '" data-cat="' + escAttr(category) + '">'
         + '<div class="partner-logo">' + logoHtml + '</div>'
+        + '<div class="partner-name">' + escHtml(name) + '</div>'
+        + (category ? '<div class="partner-category">' + escHtml(category) + '</div>' : '')
+        + (description ? '<div class="partner-desc">' + escHtml(description) + '</div>' : '')
         + '</div>';
     }
     grid.innerHTML = html;
+
+    // 筛选交互
+    filterDiv.addEventListener('click', function (e) {
+      var btn = e.target.closest('.filter-btn');
+      if (!btn) return;
+      filterDiv.querySelectorAll('.filter-btn').forEach(function (b) { b.classList.remove('active'); });
+      btn.classList.add('active');
+      var sel = btn.dataset.cat;
+      document.querySelectorAll('#partners-grid .partner-card').forEach(function (card) {
+        card.classList.toggle('hide', sel !== '全部' && card.dataset.cat !== sel);
+      });
+    });
     initReveal();
   });
 }
