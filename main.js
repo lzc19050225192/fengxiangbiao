@@ -69,8 +69,8 @@ function safeVal(obj, key, fallback) {
  * fetch JSON 文件，带缓存破坏和详细错误提示
  */
 function fetchJSON(path, cb) {
-  var url = path + '?_t=' + Date.now();
-  fetch(url)
+  var url = path + '?_v=' + Date.now();
+  fetch(url, { cache: 'no-store' })
     .then(function (res) {
       if (!res.ok) {
         // 尝试读取错误响应体，帮助排查
@@ -107,8 +107,8 @@ function fetchJSON(path, cb) {
  * fetch 文本文件（Markdown）
  */
 function fetchText(path, cb) {
-  var url = path + '?_t=' + Date.now();
-  fetch(url)
+  var url = path + '?_v=' + Date.now();
+  fetch(url, { cache: 'no-store' })
     .then(function (res) {
       if (!res.ok) throw new Error('HTTP ' + res.status + '：无法加载 ' + path);
       return res.text();
