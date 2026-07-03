@@ -264,7 +264,7 @@ nav ul li a.active {
   margin-top: 48px;
   padding-top: 32px;
   border-top: 1px solid rgba(255,255,255,0.12);
-  justify-content: center;
+  justify-content: flex-start;
 }
 .hero-stat-num {
   font-size: 1.8rem;
