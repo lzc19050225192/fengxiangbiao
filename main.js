@@ -372,9 +372,6 @@ function loadPartners() {
    7. FAQ 板块（faq.json）
    ========================================================= */
 
-var faqAllData = [];   // 全部 FAQ 数据
-var faqCurSection = '企业相关知识';  // 当前选中的子板块
-
 function loadFaq() {
   var listDiv = document.getElementById('faq-list');
   showLoading(listDiv);
@@ -388,121 +385,91 @@ function loadFaq() {
       listDiv.innerHTML = '<p style="text-align:center;color:var(--gray-4);padding:40px 0">暂无常见问题</p>';
       return;
     }
-    faqAllData = data;
-    // 兼容旧数据：没有 section 字段的默认归为"客户相关知识"
-    faqAllData.forEach(function (f) {
-      if (!f.section) f.section = '客户相关知识';
-    });
+    // 构建分类筛选按钮
+    var catMap = {};
+    for (var i = 0; i < data.length; i++) {
+      var c = safeVal(data[i], 'category', '');
+      if (c) catMap[c] = true;
+    }
+    var cats = ['全部'];
+    for (var k in catMap) cats.push(k);
+    var filterDiv = document.getElementById('faq-filter');
+    filterDiv.innerHTML = cats.map(function (c) {
+      return '<button class="filter-btn' + (c === '全部' ? ' active' : '') + '" data-cat="' + escAttr(c) + '">' + escHtml(c) + '</button>';
+    }).join('');
 
-    // Tab 切换
-    var tabsDiv = document.getElementById('faq-tabs');
-    tabsDiv.addEventListener('click', function (e) {
-      var btn = e.target.closest('.faq-tab');
-      if (!btn) return;
-      tabsDiv.querySelectorAll('.faq-tab').forEach(function (b) {
-        b.classList.remove('active');
-        b.setAttribute('aria-selected', 'false');
-      });
-      btn.classList.add('active');
-      btn.setAttribute('aria-selected', 'true');
-      faqCurSection = btn.dataset.section;
-      renderFaqBySection();
-    });
+    // 渲染 FAQ 列表
+    var listDiv = document.getElementById('faq-list');
+    var emptyDiv = document.getElementById('faq-empty');
+    var html = '';
+    for (var i = 0; i < data.length; i++) {
+      var f = data[i];
+      var question = safeVal(f, 'question', '');
+      var answer = safeVal(f, 'answer', '');
+      var category = safeVal(f, 'category', '');
+      var keypoints = f.keypoints && Array.isArray(f.keypoints) ? f.keypoints : [];
 
-    renderFaqBySection();
-  });
-}
-
-function renderFaqBySection() {
-  var sectionData = faqAllData.filter(function (f) {
-    return f.section === faqCurSection;
-  });
-
-  // 构建分类筛选按钮（仅当前板块的分类）
-  var catMap = {};
-  for (var i = 0; i < sectionData.length; i++) {
-    var c = safeVal(sectionData[i], 'category', '');
-    if (c) catMap[c] = true;
-  }
-  var cats = ['全部'];
-  for (var k in catMap) cats.push(k);
-  var filterDiv = document.getElementById('faq-filter');
-  filterDiv.innerHTML = cats.map(function (c) {
-    return '<button class="filter-btn' + (c === '全部' ? ' active' : '') + '" data-cat="' + escAttr(c) + '">' + escHtml(c) + '</button>';
-  }).join('');
-
-  // 渲染 FAQ 列表
-  var listDiv = document.getElementById('faq-list');
-  var emptyDiv = document.getElementById('faq-empty');
-  var html = '';
-  for (var i = 0; i < sectionData.length; i++) {
-    var f = sectionData[i];
-    var question = safeVal(f, 'question', '');
-    var answer = safeVal(f, 'answer', '');
-    var category = safeVal(f, 'category', '');
-    var keypoints = f.keypoints && Array.isArray(f.keypoints) ? f.keypoints : [];
-
-    var badgeHtml = category ? '<span class="q-badge">' + escHtml(category) + '</span>' : '';
-    var kpHtml = '';
-    if (keypoints.length) {
-      var kpArr = [];
-      for (var j = 0; j < keypoints.length; j++) {
-        kpArr.push('<span class="keypoint-tag">' + escHtml(String(keypoints[j])) + '</span>');
+      var badgeHtml = category ? '<span class="q-badge">' + escHtml(category) + '</span>' : '';
+      var kpHtml = '';
+      if (keypoints.length) {
+        var kpArr = [];
+        for (var j = 0; j < keypoints.length; j++) {
+          kpArr.push('<span class="keypoint-tag">' + escHtml(String(keypoints[j])) + '</span>');
+        }
+        kpHtml = '<div class="faq-keypoints">' + kpArr.join('') + '</div>';
       }
-      kpHtml = '<div class="faq-keypoints">' + kpArr.join('') + '</div>';
+      html += '<div class="faq-item reveal" data-cat="' + escAttr(category) + '" data-index="' + i + '">'
+        + '<div class="faq-question" role="button" aria-expanded="false" tabindex="0">'
+          + '<div class="faq-q-text">' + badgeHtml + escHtml(question) + '</div>'
+          + '<div class="faq-arrow" aria-hidden="true">▼</div>'
+        + '</div>'
+        + '<div class="faq-answer" role="region">'
+          + '<div class="faq-answer-text">' + escHtml(answer) + '</div>'
+          + kpHtml
+        + '</div></div>';
     }
-    html += '<div class="faq-item reveal" data-cat="' + escAttr(category) + '" data-index="' + i + '">'
-      + '<div class="faq-question" role="button" aria-expanded="false" tabindex="0">'
-        + '<div class="faq-q-text">' + badgeHtml + escHtml(question) + '</div>'
-        + '<div class="faq-arrow" aria-hidden="true">▼</div>'
-      + '</div>'
-      + '<div class="faq-answer" role="region">'
-        + '<div class="faq-answer-text">' + escHtml(answer) + '</div>'
-        + kpHtml
-      + '</div></div>';
-  }
-  listDiv.innerHTML = html;
-  emptyDiv.style.display = 'none';
+    listDiv.innerHTML = html;
 
-  // 展开/收起（每次渲染重新绑定）
-  listDiv.addEventListener('click', function (e) {
-    var qBtn = e.target.closest('.faq-question');
-    if (!qBtn) return;
-    var item = qBtn.closest('.faq-item');
-    var isOpen = item.classList.contains('open');
-    document.querySelectorAll('.faq-item.open').forEach(function (el) {
-      el.classList.remove('open');
-      el.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
-    });
-    if (!isOpen) {
-      item.classList.add('open');
-      qBtn.setAttribute('aria-expanded', 'true');
-    }
-  });
-  // 键盘支持
-  listDiv.addEventListener('keydown', function (e) {
-    if (e.key === 'Enter' || e.key === ' ') {
+    // 展开/收起
+    listDiv.addEventListener('click', function (e) {
       var qBtn = e.target.closest('.faq-question');
-      if (qBtn) { e.preventDefault(); qBtn.click(); }
-    }
-  });
-
-  // 分类筛选
-  filterDiv.addEventListener('click', function (e) {
-    var btn = e.target.closest('.filter-btn');
-    if (!btn) return;
-    filterDiv.querySelectorAll('.filter-btn').forEach(function (b) { b.classList.remove('active'); });
-    btn.classList.add('active');
-    var sel = btn.dataset.cat;
-    var visible = 0;
-    document.querySelectorAll('#faq-list .faq-item').forEach(function (item) {
-      var show = sel === '全部' || item.dataset.cat === sel;
-      item.classList.toggle('hide', !show);
-      if (show) visible++;
+      if (!qBtn) return;
+      var item = qBtn.closest('.faq-item');
+      var isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(function (el) {
+        el.classList.remove('open');
+        el.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+      });
+      if (!isOpen) {
+        item.classList.add('open');
+        qBtn.setAttribute('aria-expanded', 'true');
+      }
     });
-    emptyDiv.style.display = visible === 0 ? 'block' : 'none';
+    // 键盘支持
+    listDiv.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' || e.key === ' ') {
+        var qBtn = e.target.closest('.faq-question');
+        if (qBtn) { e.preventDefault(); qBtn.click(); }
+      }
+    });
+
+    // 分类筛选
+    filterDiv.addEventListener('click', function (e) {
+      var btn = e.target.closest('.filter-btn');
+      if (!btn) return;
+      filterDiv.querySelectorAll('.filter-btn').forEach(function (b) { b.classList.remove('active'); });
+      btn.classList.add('active');
+      var sel = btn.dataset.cat;
+      var visible = 0;
+      document.querySelectorAll('#faq-list .faq-item').forEach(function (item) {
+        var show = sel === '全部' || item.dataset.cat === sel;
+        item.classList.toggle('hide', !show);
+        if (show) visible++;
+      });
+      emptyDiv.style.display = visible === 0 ? 'block' : 'none';
+    });
+    initReveal();
   });
-  initReveal();
 }
 
 /* =========================================================
