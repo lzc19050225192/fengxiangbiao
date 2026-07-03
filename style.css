@@ -537,6 +537,36 @@ section:nth-child(even) { background: var(--gray-1); }
 
 /* ── FAQ ──────────────────────────────────────────────── */
 #faq { background: var(--gray-1); }
+.faq-tabs {
+  display: flex;
+  gap: 0;
+  margin-bottom: 28px;
+  max-width: 860px;
+  margin-left: auto;
+  margin-right: auto;
+  border-bottom: 2px solid var(--gray-2);
+}
+.faq-tab {
+  padding: 14px 32px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--gray-4);
+  background: none;
+  border: none;
+  border-bottom: 3px solid transparent;
+  cursor: pointer;
+  transition: all var(--transition);
+  margin-bottom: -2px;
+  font-family: inherit;
+  white-space: nowrap;
+}
+.faq-tab:hover {
+  color: var(--navy);
+}
+.faq-tab.active {
+  color: var(--blue);
+  border-bottom-color: var(--blue);
+}
 .faq-filter {
   display: flex;
   gap: 10px;
