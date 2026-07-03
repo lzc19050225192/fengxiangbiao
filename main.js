@@ -319,7 +319,7 @@ function loadPartners() {
       return;
     }
 
-    // 渲染卡片 — 仅 logo + 名称，简洁干净
+    // 渲染卡片 — 仅 logo，白色独立卡片
     var html = '';
     for (var i = 0; i < data.length; i++) {
       var p = data[i];
@@ -329,9 +329,8 @@ function loadPartners() {
       var logoHtml = logo
         ? '<img src="' + escAttr(logo) + '" alt="' + escAttr(name) + '" loading="lazy">'
         : (category === '政府机构' ? '🏛️' : category === '科研院所' ? '🔬' : category === '企业合作' ? '🤝' : '🏢');
-      html += '<div class="partner-card reveal reveal-delay-' + ((i % 2) + 1) + '">'
+      html += '<div class="partner-card reveal reveal-delay-' + ((i % 5) + 1) + '">'
         + '<div class="partner-logo">' + logoHtml + '</div>'
-        + '<div class="partner-name">' + escHtml(name) + '</div>'
         + '</div>';
     }
     grid.innerHTML = html;
