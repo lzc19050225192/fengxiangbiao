@@ -745,7 +745,9 @@ footer {
   #mobile-menu a:hover { color: var(--white); }
   section { padding: 64px 0; }
   .hero-stats { flex-wrap: wrap; gap: 20px; }
-  .honors-grid { grid-template-columns: 1fr; }
+  .honors-grid { grid-template-columns: repeat(2, 1fr); gap: 14px; }
+  .honor-img-wrap { height: 120px; }
+  .honor-body { padding: 12px; }
   .partners-grid { grid-template-columns: repeat(2, 1fr); }
   .footer-grid { grid-template-columns: 1fr; gap: 32px; }
   .hero-title { font-size: 1.9rem; }
