@@ -1,50 +1,50 @@
 [
   {
+    "name": "国家统计局",
+    "logo": "images/partners/1783042106790_2qs7xs.jpg",
+    "category": "政府机构",
+    "description": ""
+  },
+  {
+    "name": "中国海关",
+    "logo": "images/partners/1783042133214_3ikhws.jpg",
+    "category": "政府机构",
+    "description": ""
+  },
+  {
     "name": "国家电网",
-    "logo": "images/partners/1782480281176_h7iyf4.jpg",
+    "logo": "images/partners/1783042150076_cd0sko.jpg",
     "category": "企业合作",
-    "description": "战略合作伙伴，共同推进大型复合翼无人机系统联合研发与成果转化。"
-  },
-  {
-    "name": "青岛海关",
-    "logo": "images/partners/qd_customs.png",
-    "category": "政府机构",
-    "description": "提供海港无人机巡逻与安防系统整体解决方案，覆盖青岛港核心区域。"
-  },
-  {
-    "name": "自然资源部北海局",
-    "logo": "images/partners/nbs.png",
-    "category": "政府机构",
-    "description": "合作开展海洋遥感监测与海岸线变化分析，累计执行任务 200 余架次。"
-  },
-  {
-    "name": "中国海警局北海分局",
-    "logo": "images/partners/ccg.png",
-    "category": "政府机构",
-    "description": "提供无人机巡逻装备与操控培训服务，支撑海上执法勤务工作。"
-  },
-  {
-    "name": "中国电信青岛分公司",
-    "logo": "images/partners/telecom.png",
-    "category": "企业合作",
-    "description": "联合开展 5G 网联无人机城市应用场景探索，共建智慧城市低空感知平台。"
+    "description": ""
   },
   {
     "name": "大疆创新科技有限公司",
-    "logo": "images/partners/dji.png",
+    "logo": "images/partners/1783042279150_t5w7m2.jpg",
     "category": "企业合作",
-    "description": "授权经销商及行业解决方案合作伙伴，为客户提供大疆全系列产品及定制化集成服务。"
+    "description": ""
   },
   {
-    "name": "中国海洋大学",
-    "logo": "images/partners/ouc.png",
-    "category": "科研院所",
-    "description": "产学研战略合作，联合承担国家级海洋环境监测课题，共建无人机海洋探测联合实验室。"
+    "name": "哈尔滨工业大学",
+    "logo": "images/partners/1783042301025_895rsh.jpg",
+    "category": "校企合作",
+    "description": ""
   },
   {
-    "name": "山东省应急管理厅",
-    "logo": "images/partners/sdem.png",
-    "category": "政府机构",
-    "description": "提供应急救援无人机系统及快速部署解决方案，参与多次省级应急演练。"
+    "name": "北京航天航空大学",
+    "logo": "images/partners/1783042342273_6l2uil.jpg",
+    "category": "校企合作",
+    "description": ""
+  },
+  {
+    "name": "浙江大学",
+    "logo": "images/partners/1783042358630_51k5u2.jpg",
+    "category": "校企合作",
+    "description": ""
+  },
+  {
+    "name": "山东警察学院",
+    "logo": "images/partners/1783042384042_bm9gv0.jpg",
+    "category": "校企合作",
+    "description": ""
   }
 ]
