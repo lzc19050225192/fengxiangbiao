@@ -395,6 +395,29 @@ section:nth-child(even) { background: var(--gray-1); }
   color: rgba(255,255,255,0.85);
   text-align: center;
 }
+.cap-row {
+  background: rgba(46,140,230,0.12);
+  border: 1px solid rgba(46,140,230,0.22);
+  border-radius: 6px;
+  padding: 8px 12px;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px;
+}
+.cap-main {
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+}
+.cap-sub {
+  font-size: 0.75rem;
+  color: rgba(255,255,255,0.6);
+  text-align: right;
+  white-space: nowrap;
+}
 
 /* ── 荣誉 ─────────────────────────────────────────────── */
 #honor { background: var(--navy); position: relative; overflow: hidden; }
