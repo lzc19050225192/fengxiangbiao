@@ -48,20 +48,50 @@
     "description": ""
   },
   {
-    "name": "",
-    "logo": "",
-    "category": "科研机构",
+    "name": "国家海洋局",
+    "logo": "images/partners/1783322691978_29mq1k.jpg",
+    "category": "政府机构",
     "description": ""
   },
   {
-    "name": "",
-    "logo": "",
-    "category": "科研机构",
+    "name": "山东地震局",
+    "logo": "images/partners/1783322729948_j75547.png",
+    "category": "政府机构",
+    "description": ""
+  },
+  {
+    "name": "潍坊职业学院",
+    "logo": "images/partners/1783322772228_qme5c8.jpg",
+    "category": "校企合作",
+    "description": ""
+  },
+  {
+    "name": "聊城职业技术学院",
+    "logo": "images/partners/1783322796021_6rd9qr.jpg",
+    "category": "校企合作",
     "description": ""
   },
   {
     "name": "山东水利技师学院",
-    "logo": "images/partners/1783321971229_uxsaev.jpg",
+    "logo": "images/partners/1783322807341_524prg.jpg",
+    "category": "校企合作",
+    "description": ""
+  },
+  {
+    "name": "山东交通技师学院",
+    "logo": "images/partners/1783322908818_cdsuwe.jpg",
+    "category": "校企合作",
+    "description": ""
+  },
+  {
+    "name": "德州科技职业学院",
+    "logo": "images/partners/1783322992167_cgcvsz.jpg",
+    "category": "校企合作",
+    "description": ""
+  },
+  {
+    "name": "山东航空学院",
+    "logo": "images/partners/1783323123658_7nkz2i.jpg",
     "category": "校企合作",
     "description": ""
   }
